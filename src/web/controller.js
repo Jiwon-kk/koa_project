@@ -19,9 +19,20 @@ exports.home =(ctx,next) => {
 }*/
 
 /** 약관, 처리방침 등 정보성 페이지 영역(정적 페이지)*/
-exports.page = (ctx,next) => {
+exports.page = async (ctx,next) => {
     //let name = ctx.params.name; //아래와 완전히 똑같다.
     let { name } = ctx.params;    //위와 완전히 똑같다.
     
-    ctx.body = name;
+    let page = "";
+    let pagename;
+    switch (page) {
+        case 'terms':
+            pagename = "이용약관";
+            break;
+        case 'policy':
+            pagename = "개인정보 처리방침"
+            break;
+    }
+
+    await ctx.render('index',{pagename : pagename});
 }
