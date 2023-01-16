@@ -6,6 +6,7 @@ const {myLogging} = require('./middleware/logging')
 const webController = require('./web/controller');
 const apiUserController = require('./api/user/controller');
 const apiFeedControoler = require('./api/feed/controller');
+const { verify } = require("./middleware/auth");
 
 router.use(myLogging);
 
@@ -15,6 +16,10 @@ router.get('/page/:page',webController.page);
 router.get('/',webController.home);
 router.get('/page/:page',webController.page);
 
+router.post('/api/user/register',apiUserController.register);
+router.post('/api/user/login',apiUserController.login);
+
+router.use(verify);
 router.get('/api/user/:id',apiUserController.info);
 
 router.get('/api/feed',apiFeedControoler.index);
