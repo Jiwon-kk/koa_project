@@ -3,7 +3,6 @@
  */
 exports.myLogging = async(ctx, next) => {
     let clientIp = ctx.request.ip;
-    let url = ctx.originalUrl;
-    console.log(`${clientIp.replace("::ffff:","")}에서 호출 :: ${url}`);
+    console.log(`${clientIp.replace("::ffff:","")}에서 호출 : ${ctx.originalUrl}`);
     await next();
 }

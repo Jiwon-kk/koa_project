@@ -9,7 +9,7 @@ const apiFeedControoler = require('./api/feed/controller');
 
 router.use(myLogging);
 
-router.get('/'.myLogging,webController.home);
+router.get('/',myLogging,webController.home);
 router.get('/page/:page',webController.page);
 
 router.get('/',webController.home);
