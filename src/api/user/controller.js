@@ -1,4 +1,6 @@
 const jwt = require('jsonwebtoken');
+const { register } = require('./query');
+//const cypto = require('cypto');
 
 /** 해당 id의 회원정보들 */
 exports.info = (ctx,next) => {
@@ -8,9 +10,17 @@ exports.info = (ctx,next) => {
 
 exports.register = async (ctx,next) => {
     //회원가입 처리 모듈
+    let { email, password, name} = ctx.request.body;
+    //let result = crypto.pbkdf2Syn
 
-    let token = await generateToken ({name: 'my-name'});
+    let { affectedRows } = await register(email, password, name);
+
+    if (affectedRows > 0) {
+        let token = await generateToken ({name});
     ctx.body = token;
+    } else {
+        ctx.body = {result: "fail"};
+    }
 }
 
 exports.login = async (ctx, next) => {
