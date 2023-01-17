@@ -18,6 +18,7 @@ const apiFileController = require('./api/file/controller')
 router.use(myLogging);
 
 router.post('/file/upload',upload.single('file'), apiFileController.upload);
+router.get('/file/:id',require('./api/file/controller').download);
 
 router.get('/',myLogging,webController.home);
 router.get('/page/:page',webController.page);

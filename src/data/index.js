@@ -17,7 +17,7 @@ exports.connection = mysql.createPool(
  * 조금더 간단하게 connection.pool을 사용할 수 있도록
  * 만든 함수 입니다.
  * @param {*} queryString 쿼리 문자열
- * @param {*} params 쿼라 ? 에 들어갈 파라미터들
+ * @param {*} params 쿼리 ? 에 들어갈 파라미터들
  * @returns 
  */
 exports.pool = (queryString, params) => {
