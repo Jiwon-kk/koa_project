@@ -44,7 +44,7 @@ exports.update = async (ctx,next) => {
 /**피드 삭제 */
 exports.delete = async (ctx) => {
     let id = ctx.params;
-    let { affectedRows } = await del(id);
+    let { affectedRows } = await erase(id);
     if (affectedRows > 0) {
         ctx.body = `${id} 피드 수정`;
     } else {
