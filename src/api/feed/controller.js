@@ -14,7 +14,6 @@ exports.index = (ctx, next) => {
 /**새 피드 작성 처리 */
 exports.store = async (ctx,next) => {
     let { user_id, image_id, content } = ctx.request.body;
-    let {created_at} = dateFromNow(2023-01-20 11:30);
     let { affectedRows } = await store(user_id, image_id, content);
     if (affectedRows > 0) {
       ctx.body = { result: "새 피드 업로드" };

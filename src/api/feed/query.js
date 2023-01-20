@@ -2,11 +2,11 @@ const { pool } = require('../../data')
 
 
 /**작성한 피드 DB에 저장 */
-exports.store = async (user_id, image_id, content, created_at) => {
+exports.store = async (user_id, image_id, content) => {
     const query = `INSERT INTO feed
-    (user_id, image_id, content, created_at)
+    (user_id, image_id, content)
     VALUES (?,?,?)`;
-    return await pool(query, [user_id, image_id, content, created_at]);
+    return await pool(query, [user_id, image_id, content]);
 };
 
 /**피드 목록 가져오기 */
